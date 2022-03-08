@@ -1,1 +1,1 @@
-# project3_frontend
+Lindsey and Kim's # project3_frontend ☕
