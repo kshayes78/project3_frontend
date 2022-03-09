@@ -1,19 +1,16 @@
 import React from "react";
 
-
-function PetCard({name, url, species, breed, age, image, id}) {
-
+function PetCard({ name, url, species, breed, age, image, id }) {
   return (
-  <div> Here are your pets! 
+    <div>
       <h2>{name}</h2>
-      <h3>{url}</h3>
+      <a href={url}>Take me to pet details</a>
       <p>{species}</p>
       <p>{breed}</p>
       <p>{age}</p>
-      <img src={image} alt="cute animal"/>
-  </div>
+      <img src={image} alt="cute animal" />
+    </div>
   );
-
 }
 
 export default PetCard;
