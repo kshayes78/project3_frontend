@@ -4,7 +4,7 @@ import React, { Component, useState } from "react";
 import Select from "react-select";
 import "react-dropdown/style.css";
 
-function PetForm() {
+function PetForm({ setAgeInput }) {
   const [formData, setFormData] = useState("");
 
   // create a function that handle the React-select event and
@@ -14,6 +14,7 @@ function PetForm() {
   //     setFormData(value);
   //   };
   const ageOptions = [
+    { value: "", label: "All" },
     { value: "Baby", label: "Baby" },
     { value: "Young", label: "Young" },
     { value: "Adult", label: "Adult" },
@@ -43,10 +44,18 @@ function PetForm() {
     setFormData(e.target.value);
   }
 
+  function handleAgeChange(e) {
+    setAgeInput(e.value);
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Select placeholder="Select an Age" options={ageOptions} />
+        <Select
+          placeholder="Select an Age"
+          options={ageOptions}
+          onChange={handleAgeChange}
+        />
         <Select placeholder="Select a Gender" options={gender} />
         <Select placeholder="Select a Size" options={size} />
         <Select
