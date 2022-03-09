@@ -19,5 +19,3 @@ function PetContainer({ pets }) {
 }
 
 export default PetContainer;
-
-const favoriteFoods = [pizza, frenchFries, bulgogi, ribeye];
