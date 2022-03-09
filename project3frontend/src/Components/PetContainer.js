@@ -1,7 +1,7 @@
 import React from "react";
 import PetCard from "./PetCard";
 
-function PetContainer({ pets }) {
+function PetContainer({ pets}) {
   const createPetCards = pets.map((pet) => (
     <PetCard
       key={pet.id}
