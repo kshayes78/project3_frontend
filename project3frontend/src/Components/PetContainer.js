@@ -12,6 +12,7 @@ function PetContainer({ pets}) {
       species={pet.species}
       breed={pet.breed}
       age={pet.age}
+      description={pet.description}
     />
   ));
 

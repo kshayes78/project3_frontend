@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import PetContainer from "./PetContainer";
 import PetForm from "./PetForm";
-import '../App.css';
-
+import Header from "./Header";
+import "../App.css";
 
 function App() {
   const [pets, setPets] = useState([]);
@@ -25,8 +25,8 @@ function App() {
   }, []);
 
   const filterBySpecies = pets.filter((pet) =>
-  pet.species.toLowerCase().includes(speciesInput.toLowerCase())
-);
+    pet.species.toLowerCase().includes(speciesInput.toLowerCase())
+  );
 
   const filterByAge = filterBySpecies.filter((pet) =>
     pet.age.toLowerCase().includes(ageInput.toLowerCase())
@@ -49,11 +49,13 @@ function App() {
   );
 
   const filterByGoodWithKids = filterByHousetrained.filter((pet) =>
-  pet.good_with_kids.toLowerCase().includes(goodWithKidsInput.toLowerCase())
+    pet.good_with_kids.toLowerCase().includes(goodWithKidsInput.toLowerCase())
   );
 
   const filterByGoodWithAnimals = filterByGoodWithKids.filter((pet) =>
-    pet.good_with_animals.toLowerCase().includes(goodWithAnimalsInput.toLowerCase())
+    pet.good_with_animals
+      .toLowerCase()
+      .includes(goodWithAnimalsInput.toLowerCase())
   );
 
   const filterByHypoallergenic = filterByGoodWithAnimals.filter((pet) =>
@@ -73,7 +75,7 @@ function App() {
 
   return (
     <div className="App">
-      <h2>Connecting People with Their Pets</h2>
+      <Header />
       <PetForm
         setSpeciesInput={setSpeciesInput}
         setAgeInput={setAgeInput}

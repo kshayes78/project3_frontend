@@ -1,9 +1,55 @@
- .dropdown {
+.header {
+  /* 95% of the viewport height */
+  height: 20vh;
+  /* stretch background colors from left to right, then diagonally to bottom..out a level and into the img folder */
+  background-image: linear-gradient(
+      to right bottom,
+      /* use color-picker to adjust opacity to 0.8 so background image is visible. */
+        rgba(126, 213, 111, 0.804),
+      rgba(40, 180, 133, 0.808)
+    ),
+    url(https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3271&q=80);
+  background-size: contain;
+  /* keeps img position at top despite browser size */
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+.heading-primary {
+  color: #fff;
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 80px;
+  backface-visibility: hidden;
+  margin-bottom: 60px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+* {
+  font-family: "Lato", sans-serif;
+}
+
+.dropdown {
   font-size: 20px;
   max-width: 350px;
-} 
+}
 
-.filterSearch{
+.filterSearch {
   /* position: absolute; */
   left: 50%;
   display: flex;
@@ -16,7 +62,7 @@ img {
   height: 200px;
 }
 
-.petContainer{
+.petContainer {
   display: flex;
   flex-direction: flex;
   flex-wrap: wrap;
@@ -28,8 +74,8 @@ img {
   /* border: 1px solid black; */
   padding: 20px;
   margin: 10px;
+  max-width: 15%;
   /* margin-top: 15px;
   margin-bottom: 15px; */
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2)
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
-
