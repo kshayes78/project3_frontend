@@ -9,14 +9,14 @@ function App() {
   const [sizeInput, setSizeInput] = useState("");
   const [activityInput, setActivityInput] = useState("");
 
-  const [housetrainedInput, setHousetrainedInput] = useState("Boolean");
+  const [housetrainedInput, setHousetrainedInput] = useState();
   const [goodWithKidsInput, setGoodWithKidsInput] = useState("");
   const [goodWithAnimalsInput, setGoodWithAnimalsInput] = useState("");
   const [hypoallergenicInput, setHypoallergenicInput] = useState("");
   // const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:9293/pets")
+    fetch("http://localhost:9292/pets")
       .then((r) => r.json())
       .then(setPets);
   }, []);
@@ -38,19 +38,17 @@ function App() {
   );
 
   const filterByHousetrained = filterByActivity.filter((pet) =>
-    pet.housetrained.toLowerCase().includes(housetrainedInput.toLowerCase())
+    pet.housetrained ? housetrainedInput : !housetrainedInput
   );
-  const filterByGoodWithKids = filterByHousetrained.filter((pet) =>
-    pet.goodWithKids.toLowerCase().includes(goodWithKidsInput.toLowerCase())
-  );
-  const filterByGoodWithAnimals = filterByGoodWithKids.filter((pet) =>
-    pet.goodWithAnimals
-      .toLowerCase()
-      .includes(goodWithAnimalsInput.toLowerCase())
-  );
-  const filterByHypoallergenic = filterByGoodWithAnimals.filter((pet) =>
-    pet.hypoallergenic.toLowerCase().includes(hypoallergenicInput.toLowerCase())
-  );
+  // const filterByGoodWithKids = filterByHousetrained.filter((pet) =>
+  //   pet.goodWithKids.goodWithKidsInput
+  // );
+  // const filterByGoodWithAnimals = filterByGoodWithKids.filter((pet) =>
+  //   pet.goodWithAnimals.includes(goodWithAnimalsInput.toLowerCase())
+  // );
+  // const filterByHypoallergenic = filterByGoodWithAnimals.filter((pet) =>
+  //   pet.hypoallergenic.includes(hypoallergenicInput.toLowerCase())
+  // );
 
   // {
   //   if (pet.housetrained === true) {
@@ -77,7 +75,7 @@ function App() {
         setHypoallergenicInput={setHypoallergenicInput}
       />
       <h1>Here are Your Pets!</h1>
-      <PetContainer pets={filterByHypoallergenic} />
+      <PetContainer pets={filterByHousetrained} />
     </div>
   );
 }
