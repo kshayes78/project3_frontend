@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import PetContainer from "./PetContainer";
 import PetForm from "./PetForm";
+import '../App.css';
+
 
 function App() {
   const [pets, setPets] = useState([]);
+  const [speciesInput, setSpeciesInput] = useState("");
   const [ageInput, setAgeInput] = useState("");
   const [genderInput, setGenderInput] = useState("");
   const [sizeInput, setSizeInput] = useState("");
   const [activityInput, setActivityInput] = useState("");
 
-  const [housetrainedInput, setHousetrainedInput] = useState();
+  const [housetrainedInput, setHousetrainedInput] = useState("");
   const [goodWithKidsInput, setGoodWithKidsInput] = useState("");
   const [goodWithAnimalsInput, setGoodWithAnimalsInput] = useState("");
   const [hypoallergenicInput, setHypoallergenicInput] = useState("");
@@ -21,7 +24,11 @@ function App() {
       .then(setPets);
   }, []);
 
-  const filterByAge = pets.filter((pet) =>
+  const filterBySpecies = pets.filter((pet) =>
+  pet.species.toLowerCase().includes(speciesInput.toLowerCase())
+);
+
+  const filterByAge = filterBySpecies.filter((pet) =>
     pet.age.toLowerCase().includes(ageInput.toLowerCase())
   );
 
@@ -38,17 +45,20 @@ function App() {
   );
 
   const filterByHousetrained = filterByActivity.filter((pet) =>
-    pet.housetrained ? housetrainedInput : !housetrainedInput
+    pet.housetrained.toLowerCase().includes(housetrainedInput.toLowerCase())
   );
-  // const filterByGoodWithKids = filterByHousetrained.filter((pet) =>
-  //   pet.goodWithKids.goodWithKidsInput
-  // );
-  // const filterByGoodWithAnimals = filterByGoodWithKids.filter((pet) =>
-  //   pet.goodWithAnimals.includes(goodWithAnimalsInput.toLowerCase())
-  // );
-  // const filterByHypoallergenic = filterByGoodWithAnimals.filter((pet) =>
-  //   pet.hypoallergenic.includes(hypoallergenicInput.toLowerCase())
-  // );
+
+  const filterByGoodWithKids = filterByHousetrained.filter((pet) =>
+  pet.good_with_kids.toLowerCase().includes(goodWithKidsInput.toLowerCase())
+  );
+
+  const filterByGoodWithAnimals = filterByGoodWithKids.filter((pet) =>
+    pet.good_with_animals.toLowerCase().includes(goodWithAnimalsInput.toLowerCase())
+  );
+
+  const filterByHypoallergenic = filterByGoodWithAnimals.filter((pet) =>
+    pet.hypoallergenic.toLowerCase().includes(hypoallergenicInput.toLowerCase())
+  );
 
   // {
   //   if (pet.housetrained === true) {
@@ -65,6 +75,7 @@ function App() {
     <div className="App">
       <h2>Connecting People with Their Pets</h2>
       <PetForm
+        setSpeciesInput={setSpeciesInput}
         setAgeInput={setAgeInput}
         setGenderInput={setGenderInput}
         setSizeInput={setSizeInput}
@@ -75,7 +86,7 @@ function App() {
         setHypoallergenicInput={setHypoallergenicInput}
       />
       <h1>Here are Your Pets!</h1>
-      <PetContainer pets={filterByHousetrained} />
+      <PetContainer pets={filterByHypoallergenic} />
     </div>
   );
 }

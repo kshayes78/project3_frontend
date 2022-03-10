@@ -2,7 +2,7 @@ import React from "react";
 
 function PetCard({ name, url, species, breed, age, image, id }) {
   return (
-    <div>
+    <div className="petCard">
       <h2>{name}</h2>
       <a href={url}>Take me to pet details</a>
       <p>{species}</p>

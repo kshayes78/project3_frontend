@@ -2,6 +2,7 @@
 // import Dropdown from "react-dropdown";
 import React, { useState } from "react";
 import Select from "react-select";
+import styled from 'styled-components'
 
 function PetForm({
   setAgeInput,
@@ -12,8 +13,13 @@ function PetForm({
   setGoodWithKidsInput,
   setGoodWithAnimalsInput,
   setHypoallergenicInput,
+  setSpeciesInput
 }) {
   const [formData, setFormData] = useState("");
+
+  const Select = styled.
+
+  }
 
   // create a function that handle the React-select event and
   // save the value of that event on an state every time the component change
@@ -21,6 +27,14 @@ function PetForm({
   //     const value = event.value;
   //     setFormData(value);
   //   };
+  const speciesOptions = [
+    { value: "", label: "All" },
+    { value: "Dog", label: "Dog" },
+    { value: "Cat", label: "Cat" },
+    { value: "Rodent", label: "Rodent" },
+    { value: "Turtle", label: "Turtle" },
+  ];
+
   const ageOptions = [
     { value: "", label: "All" },
     { value: "Baby", label: "Baby" },
@@ -30,8 +44,8 @@ function PetForm({
   ];
   const gender = [
     { value: "", label: "All" },
-    { value: "Male", label: "Male" },
-    { value: "Female", label: "Female" },
+    { value: "Boy", label: "Boy" },
+    { value: "Girl", label: "Girl" },
   ];
   const size = [
     { value: "", label: "All" },
@@ -47,24 +61,24 @@ function PetForm({
     { value: "Low", label: "Low" },
   ];
   const housetrained = [
-    { value: "", label: "Doesn't matter" },
     { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" },
+    { value: "", label: "Doesn't matter" },
+    // { value: "No", label: "No" },
   ];
   const goodWithKids = [
     { value: "", label: "Doesn't matter" },
     { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" },
+    // { value: "No", label: "No" },
   ];
   const goodWithAnimals = [
     { value: "", label: "Doesn't matter" },
     { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" },
+    // { value: "No", label: "No" },
   ];
   const hypoallergenic = [
     { value: "", label: "Doesn't matter" },
     { value: "Yes", label: "Yes" },
-    { value: "No", label: "No" },
+    // { value: "No", label: "No" },
   ];
 
   function handleSubmit(e) {
@@ -74,7 +88,9 @@ function PetForm({
   function buttonChange(e) {
     setFormData(e.target.value);
   }
-
+  function handleSpeciesChange(e) {
+    setSpeciesInput(e.value);
+  }
   function handleAgeChange(e) {
     setAgeInput(e.value);
   }
@@ -105,44 +121,67 @@ function PetForm({
   }
 
   return (
-    <div>
+    <div className="filterSearch">
       <form onSubmit={handleSubmit}>
+        <label>Select a Species</label>
         <Select
+          className="dropdown"
+          placeholder="Select a Species"
+          options={speciesOptions}
+          onChange={handleSpeciesChange}
+        />
+        <label>Select an Age</label>
+        <Select
+          className="dropdown"
           placeholder="Select an Age"
           options={ageOptions}
           onChange={handleAgeChange}
         />
+        <label>Select a Gender</label>
         <Select
+          className="dropdown"
           placeholder="Select a Gender"
           options={gender}
           onChange={handleGenderChange}
         />
+        <label>Select a Size</label>
         <Select
+          className="dropdown"
           placeholder="Select a Size"
           options={size}
           onChange={handleSizeChange}
         />
+        <label>Select a Gender</label>
         <Select
+          className="dropdown"
           placeholder="Select an Activity Level"
           options={activityLevel}
           onChange={handleActivityChange}
         />
+        <label>Select a Gender</label>
         <Select
+          className="dropdown"
           placeholder="Must be housetrained"
           options={housetrained}
           onChange={handleHousetrainedChange}
         />
+        <label>Select a Gender</label>
         <Select
+          className="dropdown"
           placeholder="Good with Kids"
           options={goodWithKids}
           onChange={handleKidsChange}
         />
+        <label>Select a Gender</label>
         <Select
+          className="dropdown"
           placeholder="Good with other Animals"
           options={goodWithAnimals}
           onChange={handleAnimalsChange}
         />
+        <label>Select a Gender</label>
         <Select
+          className="dropdown"
           placeholder="Hypoallergenic"
           options={hypoallergenic}
           onChange={handleHypoallergenicChange}

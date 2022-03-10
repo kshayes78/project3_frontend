@@ -15,7 +15,7 @@ function PetContainer({ pets}) {
     />
   ));
 
-  return <div> {createPetCards} </div>;
+  return <div className="petContainer"> {createPetCards} </div>;
 }
 
 export default PetContainer;
