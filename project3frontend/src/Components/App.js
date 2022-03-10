@@ -9,10 +9,10 @@ function App() {
   const [sizeInput, setSizeInput] = useState("");
   const [activityInput, setActivityInput] = useState("");
 
-  const [housetrainedInput, setHousetrainedInput] = useState(Boolean);
-  const [goodWithKidsInput, setgoodWithKidsInput] = useState(false);
-  const [goodWithAnimalsInput, setgoodWithAnimalsInput] = useState(false);
-  const [hypoallergenicInput, setHypoallergenicInput] = useState(false);
+  const [housetrainedInput, setHousetrainedInput] = useState("Boolean");
+  const [goodWithKidsInput, setGoodWithKidsInput] = useState("");
+  const [goodWithAnimalsInput, setGoodWithAnimalsInput] = useState("");
+  const [hypoallergenicInput, setHypoallergenicInput] = useState("");
   // const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
@@ -21,19 +21,37 @@ function App() {
       .then(setPets);
   }, []);
 
-
   const filterByAge = pets.filter((pet) =>
     pet.age.toLowerCase().includes(ageInput.toLowerCase())
   );
 
-  const filterByGender = filterByAge.filter((pet) => pet.gender.toLowerCase().includes(genderInput.toLowerCase()))
+  const filterByGender = filterByAge.filter((pet) =>
+    pet.gender.toLowerCase().includes(genderInput.toLowerCase())
+  );
 
-  const filterBySize = filterByGender.filter((pet) => pet.size.toLowerCase().includes(sizeInput.toLowerCase()))
+  const filterBySize = filterByGender.filter((pet) =>
+    pet.size.toLowerCase().includes(sizeInput.toLowerCase())
+  );
 
-  const filterByActivity = filterBySize.filter((pet) => pet.activity_level.toLowerCase().includes(activityInput.toLowerCase()))
+  const filterByActivity = filterBySize.filter((pet) =>
+    pet.activity_level.toLowerCase().includes(activityInput.toLowerCase())
+  );
 
-  const filterByHousetrained = filterByActivity.filter((pet) => setHousetrainedInput((housetrainedInput) => !housetrainedInput) )
-  
+  const filterByHousetrained = filterByActivity.filter((pet) =>
+    pet.housetrained.toLowerCase().includes(housetrainedInput.toLowerCase())
+  );
+  const filterByGoodWithKids = filterByHousetrained.filter((pet) =>
+    pet.goodWithKids.toLowerCase().includes(goodWithKidsInput.toLowerCase())
+  );
+  const filterByGoodWithAnimals = filterByGoodWithKids.filter((pet) =>
+    pet.goodWithAnimals
+      .toLowerCase()
+      .includes(goodWithAnimalsInput.toLowerCase())
+  );
+  const filterByHypoallergenic = filterByGoodWithAnimals.filter((pet) =>
+    pet.hypoallergenic.toLowerCase().includes(hypoallergenicInput.toLowerCase())
+  );
+
   // {
   //   if (pet.housetrained === true) {
   //     return !housetrainedInput
@@ -48,17 +66,18 @@ function App() {
   return (
     <div className="App">
       <h2>Connecting People with Their Pets</h2>
-      <PetForm 
-        setAgeInput={setAgeInput} 
-        setGenderInput={setGenderInput} 
-        setSizeInput={setSizeInput} 
-        setActivityInput={setActivityInput} 
-        setHousetrainedInput={setHousetrainedInput} 
+      <PetForm
+        setAgeInput={setAgeInput}
+        setGenderInput={setGenderInput}
+        setSizeInput={setSizeInput}
+        setActivityInput={setActivityInput}
+        setHousetrainedInput={setHousetrainedInput}
+        setGoodWithKidsInput={setGoodWithKidsInput}
+        setGoodWithAnimalsInput={setGoodWithAnimalsInput}
+        setHypoallergenicInput={setHypoallergenicInput}
       />
       <h1>Here are Your Pets!</h1>
-      <PetContainer 
-        pets={filterByHousetrained}
-        />
+      <PetContainer pets={filterByHypoallergenic} />
     </div>
   );
 }

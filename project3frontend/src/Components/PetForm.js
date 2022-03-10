@@ -3,8 +3,16 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
-
-function PetForm({ setAgeInput, setGenderInput, setSizeInput, setActivityInput, setHousetrainedInput}) {
+function PetForm({
+  setAgeInput,
+  setGenderInput,
+  setSizeInput,
+  setActivityInput,
+  setHousetrainedInput,
+  setGoodWithKidsInput,
+  setGoodWithAnimalsInput,
+  setHypoallergenicInput,
+}) {
   const [formData, setFormData] = useState("");
 
   // create a function that handle the React-select event and
@@ -38,6 +46,26 @@ function PetForm({ setAgeInput, setGenderInput, setSizeInput, setActivityInput, 
     { value: "Medium", label: "Medium" },
     { value: "Low", label: "Low" },
   ];
+  const housetrained = [
+    { value: "", label: "Doesn't matter" },
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+  ];
+  const goodWithKids = [
+    { value: "", label: "Doesn't matter" },
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+  ];
+  const goodWithAnimals = [
+    { value: "", label: "Doesn't matter" },
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+  ];
+  const hypoallergenic = [
+    { value: "", label: "Doesn't matter" },
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+  ];
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -63,8 +91,17 @@ function PetForm({ setAgeInput, setGenderInput, setSizeInput, setActivityInput, 
     setActivityInput(e.value);
   }
 
-    function handleHousetrainedChange(e) {
-      setHousetrainedInput(e.value);
+  function handleHousetrainedChange(e) {
+    setHousetrainedInput(e.value);
+  }
+  function handleKidsChange(e) {
+    setGoodWithKidsInput(e.value);
+  }
+  function handleAnimalsChange(e) {
+    setGoodWithAnimalsInput(e.value);
+  }
+  function handleHypoallergenicChange(e) {
+    setHypoallergenicInput(e.value);
   }
 
   return (
@@ -75,14 +112,14 @@ function PetForm({ setAgeInput, setGenderInput, setSizeInput, setActivityInput, 
           options={ageOptions}
           onChange={handleAgeChange}
         />
-        <Select 
-          placeholder="Select a Gender" 
-          options={gender} 
+        <Select
+          placeholder="Select a Gender"
+          options={gender}
           onChange={handleGenderChange}
-          />
-        <Select 
-         placeholder="Select a Size" 
-          options={size} 
+        />
+        <Select
+          placeholder="Select a Size"
+          options={size}
           onChange={handleSizeChange}
         />
         <Select
@@ -90,10 +127,28 @@ function PetForm({ setAgeInput, setGenderInput, setSizeInput, setActivityInput, 
           options={activityLevel}
           onChange={handleActivityChange}
         />
-        
+        <Select
+          placeholder="Must be housetrained"
+          options={housetrained}
+          onChange={handleHousetrainedChange}
+        />
+        <Select
+          placeholder="Good with Kids"
+          options={goodWithKids}
+          onChange={handleKidsChange}
+        />
+        <Select
+          placeholder="Good with other Animals"
+          options={goodWithAnimals}
+          onChange={handleAnimalsChange}
+        />
+        <Select
+          placeholder="Hypoallergenic"
+          options={hypoallergenic}
+          onChange={handleHypoallergenicChange}
+        />
 
-
-        <div onChange={buttonChange}>
+        {/* <div onChange={buttonChange}>
           <h3>Housetrained</h3>
           <input type="radio" value="Yes" name="radio" onClick={handleHousetrainedChange}/> Yes
           <input type="radio" value="No" name="radio" /> No
@@ -106,7 +161,7 @@ function PetForm({ setAgeInput, setGenderInput, setSizeInput, setActivityInput, 
           <h3>Hypoallergenic</h3>
           <input type="radio" value="Yes" name="radio" /> Yes
           <input type="radio" value="No" name="radio" /> No
-        </div>
+        </div> */}
       </form>
     </div>
   );
