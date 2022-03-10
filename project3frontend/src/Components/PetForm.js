@@ -17,10 +17,6 @@ function PetForm({
 }) {
   const [formData, setFormData] = useState("");
 
-  const Select = styled.
-
-  }
-
   // create a function that handle the React-select event and
   // save the value of that event on an state every time the component change
   //   const handler = (event) => {
