@@ -26,7 +26,7 @@
 }
 .heading-primary {
   color: #5603ad;
-  font-size: 70px;  
+  font-size: 70px;
   text-align: center;
   padding-top: 50px;
   font-family: "Chalet", medium;
@@ -60,7 +60,7 @@
   font-family: "Lato", sans-serif;
 }
 
-h1 {  
+h1 {
   font-family: "Chalet", medium;
   text-align: center;
 }
@@ -118,3 +118,12 @@ body {
   background-color: #f7f6f0;
 }
 
+button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.897);
+  border-radius: 50%;
+
+  border: none;
+}
