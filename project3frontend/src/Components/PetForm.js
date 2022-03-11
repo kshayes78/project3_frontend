@@ -28,6 +28,8 @@ function PetForm({
     { value: "Cat", label: "Cat" },
     { value: "Rodent", label: "Rodent" },
     { value: "Turtle", label: "Turtle" },
+    { value: "Bird", label: "Bird" },
+    { value: "Reptile", label: "Reptile" }
   ];
 
   const ageOptions = [
@@ -146,35 +148,35 @@ function PetForm({
           options={size}
           onChange={handleSizeChange}
         />
-        <label>Select a Gender</label>
+        <label>Select Activity Level</label>
         <Select
           className="dropdown"
           placeholder="Select an Activity Level"
           options={activityLevel}
           onChange={handleActivityChange}
         />
-        <label>Select a Gender</label>
+        <label>Housetrained Preference</label>
         <Select
           className="dropdown"
           placeholder="Must be housetrained"
           options={housetrained}
           onChange={handleHousetrainedChange}
         />
-        <label>Select a Gender</label>
+        <label>Good with kids?</label>
         <Select
           className="dropdown"
           placeholder="Good with Kids"
           options={goodWithKids}
           onChange={handleKidsChange}
         />
-        <label>Select a Gender</label>
+        <label>Good with other animals?</label>
         <Select
           className="dropdown"
           placeholder="Good with other Animals"
           options={goodWithAnimals}
           onChange={handleAnimalsChange}
         />
-        <label>Select a Gender</label>
+        <label>Hypoallergenic Preference</label>
         <Select
           className="dropdown"
           placeholder="Hypoallergenic"

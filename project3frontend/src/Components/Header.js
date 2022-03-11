@@ -7,7 +7,12 @@ function Header() {
 
   return (
     <div className="header">
-      <h2 className="heading-primary">Connecting People With Their Pets</h2>
+      <h2 className="heading-primary">PetTinder</h2> 
+
+        <img className="tinderflame" src="../images/tinderflame.png" alt="tinderflame"/>
+    
+
+      <h4 className="heading-primary-sub">Connecting People With Their Pets</h4>
     </div>
   );
 }

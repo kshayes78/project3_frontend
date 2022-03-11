@@ -5,7 +5,7 @@
   background-image: linear-gradient(
       to right bottom,
       /* use color-picker to adjust opacity to 0.8 so background image is visible. */
-        rgba(126, 213, 111, 0.804),
+        hsla(111, 55%, 64%, 0.804),
       rgba(40, 180, 133, 0.808)
     ),
     url(https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3271&q=80);
@@ -13,14 +13,30 @@
   /* keeps img position at top despite browser size */
   background-position: top;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.tinderflame {
+  height: 66px;
+  position: absolute;
+  /* top: 48px;
+  left: 630px; */
+  top: 18%;
+  left: 41%;
+  background-size: cover;
 }
 .heading-primary {
+  color: #5603ad;
+  font-size: 70px;  
+  text-align: center;
+  padding-top: 50px;
+  font-family: "Chalet", medium;
+}
+.heading-primary-sub {
   color: #fff;
-  font-size: 40px;
+  font-size: 28px;
   text-transform: uppercase;
   text-align: center;
-  padding-top: 80px;
+  padding-top: 10px;
   backface-visibility: hidden;
   margin-bottom: 60px;
   animation-name: moveInLeft;
@@ -44,6 +60,22 @@
   font-family: "Lato", sans-serif;
 }
 
+h1 {  
+  font-family: "Chalet", medium;
+  text-align: center;
+}
+
+.yourPets {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+label {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgba(40, 180, 133, 0.808);
+  margin: 40px;
+}
+
 .dropdown {
   font-size: 20px;
   max-width: 350px;
@@ -58,7 +90,7 @@
 }
 
 img {
-  /* width: 300px; */
+  max-width: 280px;
   height: 200px;
 }
 
@@ -71,11 +103,18 @@ img {
 }
 
 .petCard {
+  background-color: white;
   /* border: 1px solid black; */
   padding: 20px;
   margin: 10px;
-  max-width: 15%;
+  max-width: 18%;
   /* margin-top: 15px;
   margin-bottom: 15px; */
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
+
+body {
+  background-color: #f7f6f0;
+}
+

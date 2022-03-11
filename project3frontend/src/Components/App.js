@@ -87,7 +87,7 @@ function App() {
         setGoodWithAnimalsInput={setGoodWithAnimalsInput}
         setHypoallergenicInput={setHypoallergenicInput}
       />
-      <h1>Here are Your Pets!</h1>
+      <h1 className="yourPets">Here are Your Pets!</h1>
       <PetContainer pets={filterByHypoallergenic} />
     </div>
   );
